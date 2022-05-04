@@ -1,6 +1,8 @@
 # msa_ecomms
 마이크로서비스 방식의 ecommerce형 backend
 
+패키지명 공통 : com.hwan2272.msaecomms.xxx
+
 
 ### 서버구동
 
