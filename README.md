@@ -1,5 +1,5 @@
 # msa_ecomms
-마이크로서비스 방식의 ecommerce형 backend 개발(자체구현)
+마이크로서비스 방식의 ecommerce형 backend 개발구현
 
 이도원님 강의 및 소스(https://github.com/joneconsulting/msa_with_spring_cloud) 기반 환경구성
 
