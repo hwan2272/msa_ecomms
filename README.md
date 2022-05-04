@@ -6,7 +6,7 @@
 
 ### 서버구동
 
-1. discovery-service 구동 : 포트 8761 - eureka 서버
+1. discovery-service 구동 : 포트 8761 - eureka 서버 - 127.0.0.1:8761 접속
 
 2. gateway-service 구동 : 포트 8000 - 각 api로 연결되는 gateway 서비스
 
