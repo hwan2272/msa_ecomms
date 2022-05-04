@@ -30,6 +30,6 @@ Microservice + Spring Cloud + SpringBoot + JWT + Spring Security + Spring Data j
 
 - 이도원님 강의 및 소스(https://github.com/joneconsulting/msa_with_spring_cloud) 기반 환경 구성
 
-- 김영한님 강의 기반 Data JPA 구성
+- 김영한님 강의 기반 Data JPA 구성 (및 일부 중복로직 등에 대한 적절한 디자인패턴 적용구상중)
 
 - 기타 독학 부분
