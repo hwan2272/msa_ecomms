@@ -1,11 +1,25 @@
 # msa_ecomms
 마이크로서비스 방식의 ecommerce형 backend
 
+
+### 서버구동
+
+1. discovery-service 구동 : 포트 8761 - eureka 서버
+
+2. gateway-service 구동 : 포트 8000 - 각 api로 연결되는 gateway 서비스
+
+3. user-service 및 기타 service 구동 : 포트 랜덤
+
+
+
+
 ### 구성방향
 
 Microservice + Spring Cloud + SpringBoot + JWT + Spring Security + Spring Data jpa + H2 Database + Kafka +
 
 (AOP + Spring Rest docs + Docker + Kubernetes + AWS EC2)
+
+
 
 
 ### 참고 강의 / 소스
