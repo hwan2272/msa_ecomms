@@ -1,0 +1,18 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+    cloud:
+      config:
+        server:
+          bootstrap: false
+          #git:
+            #uri: https://github.com/hwan2272/spring-cloud-config
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
