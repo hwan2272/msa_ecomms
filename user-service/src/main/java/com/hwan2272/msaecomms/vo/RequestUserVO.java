@@ -6,8 +6,6 @@ import lombok.Data;
 public class RequestUserVO {
 
     private String email;
-
     private String pwd;
-
     private String encPwd;
 }

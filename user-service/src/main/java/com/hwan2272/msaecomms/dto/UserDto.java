@@ -10,5 +10,4 @@ public class UserDto {
     private Long userSeq;
     private String userId;
     private String encPwd;
-    private Date createdAt;
 }

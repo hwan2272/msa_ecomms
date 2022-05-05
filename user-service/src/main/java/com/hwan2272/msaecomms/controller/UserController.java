@@ -5,6 +5,7 @@ import com.hwan2272.msaecomms.service.UserService;
 import com.hwan2272.msaecomms.vo.RequestUserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,9 +16,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Value("${message.welcome}")
+    String welcome;
+
+    @Value("${message.health}")
+    String health;
+
     @GetMapping("/hello")
     public String hello() {
-        return "hello world";
+        return welcome;
+    }
+
+    @GetMapping("/healthCheck")
+    public String healthCheck() {
+        return String.format(health, "UserService");
     }
 
     @GetMapping("/{userId}")
