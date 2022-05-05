@@ -4,6 +4,15 @@
 패키지명 공통 : com.hwan2272.msaecomms.xxx
 
 
+
+### 구성방향
+
+Microservice + Spring Cloud + SpringBoot + JWT + Spring Security + Spring Data jpa + H2 Database + Kafka +
+
+(AOP + Spring Rest docs + Docker + Kubernetes + AWS EC2)
+
+
+
 ### 서버구동
 
 1. discovery-service 구동 : 포트 8761 - eureka 서버 - 127.0.0.1:8761 접속
@@ -13,14 +22,7 @@
 3. user-service 및 기타 service 구동 : 포트 랜덤
 
 
-
-
-### 구성방향
-
-Microservice + Spring Cloud + SpringBoot + JWT + Spring Security + Spring Data jpa + H2 Database + Kafka +
-
-(AOP + Spring Rest docs + Docker + Kubernetes + AWS EC2)
-
+![spring cloud eureka 구동](https://user-images.githubusercontent.com/65170244/166868526-197915d1-18d2-49bd-8510-7b93dc885527.jpg)
 
 
 
