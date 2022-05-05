@@ -7,20 +7,22 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name="users")
-public class UserEntity {
+@Table(name="orders")
+public class OrderEntity {
 
     @Id
     @GeneratedValue
     private Long seq;
 
     @Column(nullable = false, unique = true)
-    private String userId;
+    private Long userSeq;
 
     @Column(nullable = false, unique = true)
-    private String encPwd;
+    private Long productSeq;
+
+    @Column(nullable = false, unique = true)
+    private Long qty;
 
     @Column(nullable = false, unique = true)
     private Date createdAt;
-
 }
