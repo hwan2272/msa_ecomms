@@ -5,7 +5,7 @@
 
 
 
-### 구성방향
+### 구성 라이브러리
 
 Microservice + Spring Cloud + SpringBoot + JWT + Spring Security + Spring Data jpa + H2 Database + Kafka +
 
@@ -13,7 +13,7 @@ Microservice + Spring Cloud + SpringBoot + JWT + Spring Security + Spring Data j
 
 
 
-### 서버구동
+### 서버 구동
 
 1. discovery-service 구동 : 포트 8761 - eureka 서버 - 127.0.0.1:8761 접속
 
