@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+//@RequestMapping("/users")
 @Slf4j
 public class UserController {
 
@@ -38,7 +38,7 @@ public class UserController {
         return userService.getUser(userId);
     }
 
-    @PostMapping
+    @PostMapping("/users")
     public void addUserInfo(@RequestBody RequestUser requestUser) {
         log.info("addUserInfo");
         UserDto userDto = new UserDto();

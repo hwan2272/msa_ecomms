@@ -33,6 +33,8 @@ class UserEntityTest {
     public void testEntity() {
         UserEntity user = new UserEntity();
         user.setUserId("emailId");
+        user.setEmail("emailId");
+        user.setName("name");
         user.setEncPwd("encPwd");
         user.setCreatedAt(new Date());
 
@@ -46,6 +48,8 @@ class UserEntityTest {
     public void testEntity2() {
         UserEntity user = new UserEntity();
         user.setUserId("emailId2");
+        user.setEmail("emailId2");
+        user.setName("name2");
         user.setEncPwd("encPwd2");
         user.setCreatedAt(new Date());
 

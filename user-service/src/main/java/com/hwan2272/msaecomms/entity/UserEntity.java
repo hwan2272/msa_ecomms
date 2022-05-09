@@ -14,6 +14,12 @@ public class UserEntity {
     @GeneratedValue
     private Long seq;
 
+    @Column(nullable = false, length = 50, unique = true)
+    private String email;
+
+    @Column(nullable = false, length = 50)
+    private String name;
+
     @Column(nullable = false, unique = true)
     private String userId;
 
