@@ -61,8 +61,8 @@ class UserEntityTest {
     @Test
     @Order(3)
     public void testEntity3() {
-        String userId = "emailId2";
-        System.out.println("::::dataJpa Repo :: getuser ::: " + dataJpaRepository.findByUserId(userId));
+        String email = "emailId2";
+        System.out.println("::::dataJpa Repo :: getuser ::: " + dataJpaRepository.findByEmail(email));
 
     }
 

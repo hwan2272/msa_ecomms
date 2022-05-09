@@ -1,6 +1,7 @@
 package com.hwan2272.msaecomms.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,7 +27,8 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String encPwd;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, updatable = false, insertable = false)
+    @ColumnDefault(value = "CURRENT_TIMESTAMP")
     private Date createdAt;
 
 }

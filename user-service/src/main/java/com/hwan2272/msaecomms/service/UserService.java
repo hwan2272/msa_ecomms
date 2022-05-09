@@ -4,19 +4,30 @@ import com.hwan2272.msaecomms.dto.UserDto;
 import com.hwan2272.msaecomms.entity.UserEntity;
 import com.hwan2272.msaecomms.repository.UserDataJpaRepository;
 import com.hwan2272.msaecomms.repository.UserRepository;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 @Service
 public class UserService implements UserDetailsService {
     /*@Autowired
     UserRepository userRepository;*/
+
+    @Autowired
+    ModelMapper mMapper;
+
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     UserDataJpaRepository userDataJpaRepository;
@@ -31,18 +42,15 @@ public class UserService implements UserDetailsService {
     }
 
     public void addUser(UserDto userDto) {
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUserId(userDto.getUserId());
-        userEntity.setEmail(userDto.getEmail());
-        userEntity.setName(userDto.getName());
-        userEntity.setEncPwd(userDto.getEncPwd());
+        userDto.setUserId(UUID.randomUUID().toString());
+        userDto.setEncPwd(passwordEncoder.encode(userDto.getPwd()));
+        UserEntity userEntity = mMapper.map(userDto, UserEntity.class);
         userDataJpaRepository.save(userEntity);
     }
 
-    public UserDto getUser(String userId) {
-        UserEntity userEntity = userDataJpaRepository.findByUserId(userId);
-        UserDto userDto = new UserDto();
-        userDto.setUserId(userEntity.getUserId());
+    public UserDto getUser(String userEmail) {
+        UserEntity userEntity = userDataJpaRepository.findByEmail(userEmail);
+        UserDto userDto = mMapper.map(userEntity, UserDto.class);
         return userDto;
     }
 
