@@ -4,11 +4,11 @@ server:
 spring:
   application:
     name: config-service
-    cloud:
-      config:
-        server:
-          git:
-            uri: file:///D:/workspace/intellij_springboot/msa_ecomms/configs-repo
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///D:/workspace/intellij_springboot/msa_ecomms_configs/
             #uri: https://github.com/hwan2272/spring-cloud-config
           #bootstrap: false
 
