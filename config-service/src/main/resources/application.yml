@@ -8,6 +8,7 @@ spring:
     config:
       server:
         git:
+          #bootstrap: true
           uri: file:///D:/workspace/intellij_springboot/msa_ecomms_configs/
             #uri: https://github.com/hwan2272/spring-cloud-config
           #bootstrap: false
