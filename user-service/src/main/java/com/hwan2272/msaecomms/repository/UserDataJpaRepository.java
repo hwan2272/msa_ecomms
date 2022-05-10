@@ -5,6 +5,6 @@ import com.hwan2272.msaecomms.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserDataJpaRepository extends JpaRepository<UserEntity, Long> {
-    //UserEntity findByUserId(String userId);
+    UserEntity findByUserId(String userId);
     UserEntity findByEmail(String userId);
 }

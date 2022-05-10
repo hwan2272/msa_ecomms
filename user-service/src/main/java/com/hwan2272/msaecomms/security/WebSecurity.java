@@ -3,10 +3,12 @@ package com.hwan2272.msaecomms.security;
 import com.hwan2272.msaecomms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.Filter;
@@ -15,11 +17,16 @@ import javax.servlet.Filter;
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     UserService userService;
+    Environment env;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public WebSecurity(UserService userService, Environment env) {
+        this.userService = userService;
+        this.env = env;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -28,8 +35,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/healthCheck").permitAll();
         http.authorizeRequests().antMatchers("/users").permitAll();
 
-        http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("192.168.219.180")
+        http.authorizeRequests().antMatchers("/**").permitAll()
+                //.hasIpAddress("192.168.219.180")
+                //.access("hasIpAddress('" + "192.168.219.180" + "')")
                 .and()
                 .addFilter(getAuthenticationFilter());
 
@@ -37,7 +45,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws  Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(userService, env);
         authenticationFilter.setAuthenticationManager(authenticationManager());
         return authenticationFilter;
     }

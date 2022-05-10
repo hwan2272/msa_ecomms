@@ -40,11 +40,12 @@ public class UserController {
         return String.format(health, "UserService");
     }
 
-    @GetMapping("/users/{email}")
-    public ResponseEntity getUserInfo(@RequestBody RequestUser requestUser) {
+    @GetMapping("/users/{userId}")
+    public ResponseEntity getUserInfo(@PathVariable String userId) {
         log.info("getUserInfo");
-        UserDto userDto = userService.getUser(requestUser.getEmail());
-        return new ResponseEntity(userDto, HttpStatus.ACCEPTED);
+        UserDto userDto = userService.getUserDetails(userId.trim());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userDto);
     }
 
     @PostMapping("/users")
