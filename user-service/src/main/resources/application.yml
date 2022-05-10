@@ -31,9 +31,9 @@ spring:
         show_sql: true
         format_sql: true
 
-jwt:
-  expirationTime: 86400000 #24시간
-  secretKey: hwan2272_dev
+#jwt:
+#  expirationTime: 86400000 #24시간
+#  secretKey: hwan2272_dev
 
 logging:
   level:

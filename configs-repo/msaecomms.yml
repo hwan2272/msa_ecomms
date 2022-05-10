@@ -1,0 +1,3 @@
+jwt:
+  expirationTime: 86400000 #24시간
+  secretKey: hwan2272

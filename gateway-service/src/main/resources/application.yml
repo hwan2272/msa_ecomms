@@ -52,5 +52,5 @@ spring:
           predicates:
             - Path=/product/**
 
-jwt:
-  secretKey: hwan2272_dev
+#jwt:
+#  secretKey: hwan2272_dev

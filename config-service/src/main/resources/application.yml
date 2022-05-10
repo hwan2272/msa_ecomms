@@ -7,9 +7,10 @@ spring:
     cloud:
       config:
         server:
-          bootstrap: false
-          #git:
+          git:
+            uri: file:///D:/workspace/intellij_springboot/msa_ecomms/configs-repo
             #uri: https://github.com/hwan2272/spring-cloud-config
+          #bootstrap: false
 
 management:
   endpoints:
