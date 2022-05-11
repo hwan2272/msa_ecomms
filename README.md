@@ -19,7 +19,9 @@ Microservice + Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data j
 
 2. gateway-service 구동 : 포트 8000 - 각 api로 연결되는 gateway 서비스
 
-3. user-service 및 기타 service 구동 : 포트 랜덤
+3. config-service 구동 : 포트 8888 / RabbitMQ 구동 : (자동구동), 포트 5672
+
+4. user-service 및 기타 service 구동 : 포트 랜덤
 
 
 ![spring cloud eureka 구동](https://user-images.githubusercontent.com/65170244/166868526-197915d1-18d2-49bd-8510-7b93dc885527.jpg)
