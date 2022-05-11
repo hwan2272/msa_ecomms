@@ -11,6 +11,11 @@ eureka:
 spring:
   application:
     name: gateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     gateway:
       routes:
@@ -18,6 +23,14 @@ spring:
 #          uri: lb://USER-SERVICE
 #          predicates:
 #            - Path=/users/**
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/users/(?<segment>.*), /$\{segment}
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
@@ -54,3 +67,9 @@ spring:
 
 #jwt:
 #  secretKey: hwan2272_dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
