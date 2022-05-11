@@ -1,15 +1,27 @@
 package com.hwan2272.msaecomms.controller;
 
+import com.hwan2272.msaecomms.dto.OrderDto;
+import com.hwan2272.msaecomms.entity.OrderEntity;
 import com.hwan2272.msaecomms.service.OrderService;
 import com.hwan2272.msaecomms.vo.RequestOrder;
+import com.hwan2272.msaecomms.vo.ResponseOrder;
 import com.netflix.discovery.converters.Auto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+
+    @Autowired
+    ModelMapper mMapper;
 
     @Autowired
     OrderService orderService;
@@ -30,13 +42,25 @@ public class OrderController {
         return String.format(health, "OrderService");
     }
 
-    @GetMapping("/{userId}")
-    public RequestOrder getOrders(@PathVariable(value = "userId") String userId) {
-        return null;
+    @PostMapping("/{userId}")
+    public ResponseEntity addOrderInfo(
+            @PathVariable String userId,
+            @RequestBody RequestOrder requestOrder) {
+        OrderDto OrderDto = mMapper.map(requestOrder, OrderDto.class);
+        OrderDto.setUserId(userId);
+        orderService.addOrder(OrderDto);
+
+        ResponseOrder responseOrder = mMapper.map(OrderDto, ResponseOrder.class);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(responseOrder);
     }
 
-    @PostMapping
-    public void addOrder(@RequestBody RequestOrder requestOrder) {
-
+    @GetMapping("/{userId}/orders")
+    public ResponseEntity getOrders(
+            @PathVariable(value = "userId") String userId) {
+        List<OrderDto> orders = orderService.getUserOrders(userId.trim());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(orders);
     }
+
 }

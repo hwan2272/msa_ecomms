@@ -1,6 +1,7 @@
 package com.hwan2272.msaecomms.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,15 +15,25 @@ public class OrderEntity {
     @GeneratedValue
     private Long seq;
 
-    @Column(nullable = false, unique = true)
-    private Long userSeq;
+    @Column(nullable = false)
+    private String userId;
+
+    @Column(nullable = false)
+    private String productId;
 
     @Column(nullable = false, unique = true)
-    private Long productSeq;
+    private String orderId;
 
-    @Column(nullable = false, unique = true)
-    private Long qty;
+    @Column(nullable = false)
+    private Integer qty;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
+    private Integer totalPrice;
+
+    @Column(nullable = false)
+    private Integer unitPrice;
+
+    @Column(nullable = false, updatable = false, insertable = false)
+    @ColumnDefault(value = "CURRENT_TIMESTAMP")
     private Date createdAt;
 }
