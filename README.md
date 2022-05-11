@@ -7,7 +7,7 @@
 
 ### 구성 라이브러리
 
-Microservice + Spring Cloud + SpringBoot + JWT + Spring Security + Spring Data jpa + H2 Database + Kafka +
+Microservice + Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + H2 Database + RabbitMQ + Kafka +
 
 (AOP + Spring Rest docs + Docker + Kubernetes + AWS EC2)
 
