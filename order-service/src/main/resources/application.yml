@@ -35,6 +35,7 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
+    com.hwan2272.msaecomms: debug
 
 message:
   welcome: "Hello World!!"

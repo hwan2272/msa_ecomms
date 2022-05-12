@@ -1,12 +1,11 @@
 package com.hwan2272.msaecomms.service;
 
+import com.hwan2272.msaecomms.client.OrderServiceFeignClient;
 import com.hwan2272.msaecomms.dto.UserDto;
 import com.hwan2272.msaecomms.entity.UserEntity;
 import com.hwan2272.msaecomms.repository.UserDataJpaRepository;
-import com.hwan2272.msaecomms.repository.UserRepository;
+import com.hwan2272.msaecomms.vo.ResponseOrder;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,6 +34,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserDataJpaRepository userDataJpaRepository;
 
+    @Autowired
+    OrderServiceFeignClient orderServiceFeignClient;
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity userEntity = userDataJpaRepository.findByEmail(email);
@@ -56,6 +58,9 @@ public class UserService implements UserDetailsService {
     public UserDto getUserDetails(String userId) {
         UserEntity userEntity = userDataJpaRepository.findByUserId(userId);
         UserDto userDto = mMapper.map(userEntity, UserDto.class);
+
+        List<ResponseOrder> orders = orderServiceFeignClient.getOrders(userId);
+        userDto.setOrders(orders);
         return userDto;
     }
 
