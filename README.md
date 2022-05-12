@@ -34,7 +34,7 @@ Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + H2 Databas
 
 1. POST localhost:8000/users/users - 사용자 가입 (users insert)
 2. POST localhost:8000/users/login - 로그인 (JWT발급) 
-3. POST localhost:8000/users/busrefresh - 전모듈 config 정보 refresh (재가동 없음)
+3. POST localhost:8000/users/actuator/busrefresh - 전모듈 config 정보 refresh (재가동 없음)
 4. GET localhost:8000/users/users/{userId} - 사용자 정보 조회
 5. POST localhost:8000/orders/{userId} - 주문하기 (orders insert)
 6. GET localhost:8000/orders/{userId}/orders - 사용자의 주문 정보 조회
