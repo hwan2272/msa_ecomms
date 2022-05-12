@@ -30,6 +30,20 @@ Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + H2 Databas
 
 
 
+### Endpoint 목록
+
+1. POST localhost:8000/users/users - 사용자 가입 (users insert)
+2. POST localhost:8000/users/login - 로그인 (JWT발급) 
+3. POST localhost:8000/users/busrefresh - 전모듈 config 정보 refresh (재가동 없음)
+4. GET localhost:8000/users/users/{userId} - 사용자 정보 조회
+5. POST localhost:8000/orders/{userId} - 주문하기 (orders insert)
+6. GET localhost:8000/orders/{userId}/orders - 사용자의 주문 정보 조회
+7. GET localhost:8000/product/{productId} - 상품 정보 조회
+
+4~7 에는 Authorization header 필요 (Bearer JWT)
+
+
+
 ### 참고 강의 / 소스
 
 ### 인프런
