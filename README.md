@@ -22,6 +22,8 @@ Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + H2 Databas
 3. config-service 구동 : 포트 8888 / RabbitMQ 구동 : (자동구동), 포트 5672
 4. user-service 및 기타 service 구동 : 포트 랜덤
 
+config-service 구동이 user-service등보다 늦었을 경우, busrefresh사용하여 config 재적용
+
 
 ![spring cloud eureka 구동](https://user-images.githubusercontent.com/65170244/166868526-197915d1-18d2-49bd-8510-7b93dc885527.jpg)
 
