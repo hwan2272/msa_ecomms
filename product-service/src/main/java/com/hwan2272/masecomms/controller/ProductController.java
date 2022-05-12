@@ -1,16 +1,26 @@
 package com.hwan2272.masecomms.controller;
 
+import com.hwan2272.masecomms.dto.ProductDto;
 import com.hwan2272.masecomms.service.ProductService;
 import com.hwan2272.masecomms.vo.RequestProduct;
+import com.hwan2272.masecomms.vo.ResponseProduct;
+import com.netflix.discovery.converters.Auto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
+
     @Autowired
-    ProductService ProductService;
+    ModelMapper mMapper;
+
+    @Autowired
+    ProductService productService;
 
     @Value("${message.welcome}")
     String welcome;
@@ -29,12 +39,11 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public RequestProduct getProduct(@PathVariable(value = "productId") String productId) {
-        return null;
+    public ResponseEntity getProduct(
+            @PathVariable(value = "productId") String productId) {
+        ProductDto productDto = productService.getProduct(productId);
+        ResponseProduct product = mMapper.map(productDto, ResponseProduct.class);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 
-    @PostMapping
-    public void addProduct(@RequestBody RequestProduct requestProduct) {
-
-    }
 }
