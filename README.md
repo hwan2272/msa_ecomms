@@ -41,6 +41,8 @@ config-service 구동이 user-service등보다 늦었을 경우, busrefresh사�
 
 4~7 에는 Authorization header 필요 (Bearer JWT)
 
+![KakaoTalk_20220513_095306553_3](https://user-images.githubusercontent.com/65170244/168190789-94f904f5-b16d-4ed0-904f-8841859de68a.jpg)
+
 
 
 ### 참고 강의 / 소스
