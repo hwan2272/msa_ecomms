@@ -2,6 +2,7 @@ package com.hwan2272.msaecomms.controller;
 
 import com.hwan2272.msaecomms.dto.OrderDto;
 import com.hwan2272.msaecomms.entity.OrderEntity;
+import com.hwan2272.msaecomms.kafka.KafkaProducer;
 import com.hwan2272.msaecomms.service.OrderService;
 import com.hwan2272.msaecomms.vo.RequestOrder;
 import com.hwan2272.msaecomms.vo.ResponseOrder;
@@ -26,6 +27,9 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
+    @Autowired
+    KafkaProducer kafkaProducer;
+
     @Value("${message.welcome}")
     String welcome;
 
@@ -46,11 +50,14 @@ public class OrderController {
     public ResponseEntity addOrderInfo(
             @PathVariable String userId,
             @RequestBody RequestOrder requestOrder) {
-        OrderDto OrderDto = mMapper.map(requestOrder, OrderDto.class);
-        OrderDto.setUserId(userId);
-        orderService.addOrder(OrderDto);
+        OrderDto orderDto = mMapper.map(requestOrder, OrderDto.class);
+        orderDto.setUserId(userId);
+        orderService.addOrder(orderDto);
 
-        ResponseOrder responseOrder = mMapper.map(OrderDto, ResponseOrder.class);
+        ResponseOrder responseOrder = mMapper.map(orderDto, ResponseOrder.class);
+
+        kafkaProducer.send("topic-orders", orderDto);
+
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(responseOrder);
     }
