@@ -28,6 +28,14 @@ config-service 구동이 user-service등보다 늦었을 경우, busrefresh사�
 ![spring cloud eureka 구동](https://user-images.githubusercontent.com/65170244/166868526-197915d1-18d2-49bd-8510-7b93dc885527.jpg)
 
 
+### Kafka 구동
+
+Window 환경 - Window PowerShell 실행
+1. zookeeper 구동 - .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+2. kafka server 구동 - .\bin\windows\kafka-server-start.bat .\config\server.properties
+3. kafka producer 구동 및 토픽설정 - .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic start-events
+4. kafka consumer 구동 및 토픽설정 - .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic start-events
+5. producer에서 message 입력 -> consumer에서 표시되는지 확인
 
 ### Endpoint 목록
 
