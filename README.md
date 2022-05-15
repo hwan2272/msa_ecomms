@@ -33,9 +33,13 @@ config-service 구동이 user-service등보다 늦었을 경우, busrefresh사�
 Window 환경 - Window PowerShell 실행
 1. zookeeper 구동 - .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 2. kafka server 구동 - .\bin\windows\kafka-server-start.bat .\config\server.properties
-3. kafka producer 구동 및 토픽설정 - .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic start-events
-4. kafka consumer 구동 및 토픽설정 - .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic start-events
+3. kafka producer 구동 및 토픽설정 - .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic quickstart-events (토픽명 임의 지정)
+4. kafka consumer 구동 및 토픽설정 - .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic quickstart-events (토픽명 임의 지정)
 5. producer에서 message 입력 -> consumer에서 표시되는지 확인
+
+
+![kafka구동](https://user-images.githubusercontent.com/65170244/168455543-bf4bbd25-8a2a-4e72-b6e7-09afed52eae9.png)
+
 
 ### Endpoint 목록
 
@@ -48,6 +52,7 @@ Window 환경 - Window PowerShell 실행
 7. GET localhost:8000/product/{productId} - 상품 정보 조회
 
 4~7 에는 Authorization header 필요 (Bearer JWT)
+
 
 ![KakaoTalk_20220513_095306553_3](https://user-images.githubusercontent.com/65170244/168190789-94f904f5-b16d-4ed0-904f-8841859de68a.jpg)
 
