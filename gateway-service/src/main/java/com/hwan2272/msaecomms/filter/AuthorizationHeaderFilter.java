@@ -1,7 +1,10 @@
 package com.hwan2272.msaecomms.filter;
 
+import com.hwan2272.msaecomms.client.UserServiceFeignClient;
+import com.netflix.discovery.converters.Auto;
 import io.jsonwebtoken.Jwts;
 import org.apache.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.env.Environment;
@@ -18,10 +21,12 @@ import java.util.Date;
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config> {
 
     Environment env;
+    //UserServiceFeignClient userServiceFeignClient;
 
     public AuthorizationHeaderFilter(Environment env) {
         super(Config.class);
         this.env = env;
+        //this.userServiceFeignClient = userServiceFeignClient;
     }
 
     @Override
@@ -60,6 +65,10 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             result = false;
         }
         else {
+            String userId = subject;
+            /*if(userServiceFeignClient.getUserInfo(userId) != null) {
+
+            }*/
             result = true;
         }
 
