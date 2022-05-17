@@ -60,6 +60,12 @@ Window 환경 - Window PowerShell 실행
 ![KakaoTalk_20220513_095306553_3](https://user-images.githubusercontent.com/65170244/168190789-94f904f5-b16d-4ed0-904f-8841859de68a.jpg)
 
 
+### Docker (user-service)
+1. docker build --tag hwan2272/user-service:1.0 .
+2. docker push hwan2272/user-service:1.0 => https://hub.docker.com/repository/docker/hwan2272/user-service
+3. docker pull hwan2272/user-service:1.0
+
+
 
 ### 참고 강의 / 소스
 
@@ -69,9 +75,3 @@ Window 환경 - Window PowerShell 실행
 - 김영한님 강의 기반 Data JPA 구성 (및 일부 중복로직 등에 대한 적절한 디자인패턴 적용구상중)
 - 기타 독학 부분
 
-
-
-### Docker
-1. docker build --tag hwan2272/user-service:1.0 .
-2. docker push hwan2272/user-service:1.0 => https://hub.docker.com/repository/docker/hwan2272/user-service
-3. docker pull hwan2272/user-service:1.0
