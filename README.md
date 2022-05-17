@@ -68,3 +68,10 @@ Window 환경 - Window PowerShell 실행
 - 이도원님 강의 및 소스(https://github.com/joneconsulting/msa_with_spring_cloud) 기반 환경 구성
 - 김영한님 강의 기반 Data JPA 구성 (및 일부 중복로직 등에 대한 적절한 디자인패턴 적용구상중)
 - 기타 독학 부분
+
+
+
+### Docker
+1. docker build --tag hwan2272/user-service:1.0 .
+2. docker push hwan2272/user-service:1.0 => https://hub.docker.com/repository/docker/hwan2272/user-service
+3. docker pull hwan2272/user-service:1.0
