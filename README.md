@@ -9,7 +9,10 @@
 
 Microservice(구성개념)
 
-Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + H2 Database + RabbitMQ + Kafka +
+Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + 
+
+H2 Database||MariaDB + RabbitMQ + Kafka +
+
 Docker + AWS EC2 +
 
 (AOP + Spring Rest docs + Kubernetes)
