@@ -5,32 +5,38 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.hwan2272.msaecomms.dto.KafkaConnectOrderDto;
 import com.hwan2272.msaecomms.dto.OrderDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 @Slf4j
-public class KafkaProducer {
+public class KafkaConnectProducer {
     @Autowired
     KafkaTemplate kafkaTemplate;
 
-    public OrderDto send(String topic, OrderDto orderDto) {
+    public KafkaConnectOrderDto send(String topic, OrderDto orderDto) {
+
+        KafkaConnectOrderDto kafkaConnectOrderDto = new KafkaConnectOrderDto(orderDto);
+        //kafkaConnectOrderDto.setPayloadFromOrderDto(orderDto);
+
         ObjectMapper mapper = new ObjectMapper();
+        //mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        //Gson gson = new Gson();
         String jsonString = "";
         try {
-            jsonString = mapper.writeValueAsString(orderDto);
+            //jsonString = gson.toJson(kafkaConnectOrderDto);
+            jsonString = mapper.writeValueAsString(kafkaConnectOrderDto);
         }
-        catch (JsonProcessingException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         kafkaTemplate.send(topic, jsonString);
         log.info("Kafka sent data :" + orderDto);
-        return orderDto;
+        return kafkaConnectOrderDto;
     }
 }
