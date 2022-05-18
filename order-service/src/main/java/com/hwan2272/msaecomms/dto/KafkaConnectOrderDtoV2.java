@@ -9,7 +9,8 @@ import java.util.*;
 @Data
 public class KafkaConnectOrderDtoV2 {
     private Schema schema;
-    private Payload payload;
+    //private Payload payload;
+    private Map<String, Object> payload;
 
     private final String sinkTopicOrdersConnectName = "sink-topic-orders-connect";
 
@@ -17,20 +18,21 @@ public class KafkaConnectOrderDtoV2 {
         this.setSchemaInit();
     }*/
 
-    public KafkaConnectOrderDtoV2(OrderDto orderDto) {
+    public KafkaConnectOrderDtoV2(OrderDto orderDto) throws Exception {
         this.setSchemaInit(orderDto);
         this.setPayloadFromOrderDto(orderDto);
     }
 
     public void setSchemaInit(OrderDto orderDto) {
         List<Field> fieldList = new ArrayList<>();
-        for(java.lang.reflect.Field f : OrderDto.class.getDeclaredFields()) {
+        for(java.lang.reflect.Field f : orderDto.getClass().getDeclaredFields()) {
             String underscoreField = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, f.getName());
             String simpleType = f.getType().getSimpleName();
 
             Field field = new Field(
                     (simpleType.toLowerCase().contains("string") ? "string"
-                            : simpleType.toLowerCase().contains("Integer") ? "int32" : ""),
+                     : simpleType.toLowerCase().contains("integer") ? "int32"
+                     : simpleType.toLowerCase().contains("date") ? "date" : ""),
                     true,
                     underscoreField
             );
@@ -45,17 +47,15 @@ public class KafkaConnectOrderDtoV2 {
         this.setSchema(sch);
     }
 
-    public void setPayloadFromOrderDto(OrderDto orderDto) {
-        Payload pay = new Payload(
-                orderDto.getOrderId(),
-                orderDto.getUserId(),
-                orderDto.getProductId(),
-                orderDto.getQty(),
-                orderDto.getUnitPrice(),
-                orderDto.getTotalPrice(),
-                orderDto.getCreatedAt()
-        );
-        this.setPayload(pay);
+    public void setPayloadFromOrderDto(OrderDto orderDto) throws Exception {
+        Map<String, Object> payMap = new LinkedHashMap<>();
+        for(java.lang.reflect.Field f : orderDto.getClass().getDeclaredFields()) {
+            f.setAccessible(true);
+            String underscoreField = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, f.getName());
+            Object data = f.get(orderDto);
+            payMap.put(underscoreField, data);
+        }
+        this.setPayload(payMap);
     }
 
     @Data
@@ -75,7 +75,7 @@ public class KafkaConnectOrderDtoV2 {
         private String field;
     }
 
-    @Data
+    /*@Data
     @AllArgsConstructor
     public class Payload {
         private String order_id;
@@ -85,5 +85,5 @@ public class KafkaConnectOrderDtoV2 {
         private Integer unit_price;
         private Integer total_price;
         private Date created_at;
-    }
+    }*/
 }

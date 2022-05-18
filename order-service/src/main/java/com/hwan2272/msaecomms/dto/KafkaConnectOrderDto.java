@@ -11,7 +11,7 @@ public class KafkaConnectOrderDto {
     private Schema schema;
     private Payload payload;
 
-    private final String sinkTopicOrdersConnectName = "sink-topic-orders-connect";
+    //private final String sinkTopicOrdersConnectName = "sink-topic-orders-connect";
 
     public KafkaConnectOrderDto() {
         this.setSchemaInit();
@@ -33,7 +33,7 @@ public class KafkaConnectOrderDto {
                     new Field("int32", true, "total_price")
                 ),
                 false,
-                sinkTopicOrdersConnectName);
+                "sink-topic-orders-connect");
         this.setSchema(sch);
     }
 

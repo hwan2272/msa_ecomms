@@ -1,6 +1,7 @@
 package com.hwan2272.msaecomms.controller;
 
 import com.hwan2272.msaecomms.dto.KafkaConnectOrderDto;
+import com.hwan2272.msaecomms.dto.KafkaConnectOrderDtoV2;
 import com.hwan2272.msaecomms.dto.OrderDto;
 import com.hwan2272.msaecomms.entity.OrderEntity;
 import com.hwan2272.msaecomms.kafka.KafkaConnectProducer;
@@ -57,7 +58,7 @@ public class OrderController {
     @PostMapping("/{userId}")
     public ResponseEntity addOrderInfo(
             @PathVariable String userId,
-            @RequestBody RequestOrder requestOrder) {
+            @RequestBody RequestOrder requestOrder) throws Exception {
         OrderDto orderDto = mMapper.map(requestOrder, OrderDto.class);
         orderDto.setUserId(userId);
         orderDto.setOrderId(UUID.randomUUID().toString());
