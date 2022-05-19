@@ -79,13 +79,12 @@ Window 환경 - Window PowerShell 실행
 
 ### Zipkin 서버 구동
 
-docker pull openzipkin/zipkin
-
-docker run -d -p 9411:9411 openzipkin/zipkin
+1. docker pull openzipkin/zipkin
+2. docker run -d -p 9411:9411 openzipkin/zipkin
 
 - localhost:9411/zipkin
 
-
+![zipkin구동_20220519](https://user-images.githubusercontent.com/65170244/169271404-120e8026-d7aa-4758-a3fa-ede75816b81b.jpg)
 
 
 
