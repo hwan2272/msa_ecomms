@@ -12,8 +12,6 @@ public class KafkaConnectOrderDtoV2 {
     //private Payload payload;
     private Map<String, Object> payload;
 
-    private final String sinkTopicOrdersConnectName = "sink-topic-orders-connect";
-
     /*public KafkaConnectOrderDtoIncrease() {
         this.setSchemaInit();
     }*/
@@ -26,33 +24,40 @@ public class KafkaConnectOrderDtoV2 {
     public void setSchemaInit(OrderDto orderDto) {
         List<Field> fieldList = new ArrayList<>();
         for(java.lang.reflect.Field f : orderDto.getClass().getDeclaredFields()) {
-            String underscoreField = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, f.getName());
-            String simpleType = f.getType().getSimpleName();
+            if(!f.getName().equals("createdAt")) {
+                String underscoreField = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, f.getName());
+                String simpleType = f.getType().getSimpleName();
 
-            Field field = new Field(
-                    (simpleType.toLowerCase().contains("string") ? "string"
-                     : simpleType.toLowerCase().contains("integer") ? "int32"
-                     : simpleType.toLowerCase().contains("date") ? "date" : ""),
-                    true,
-                    underscoreField
-            );
-            fieldList.add(field);
+                Field field = new Field(
+                        (simpleType.toLowerCase().contains("string") ? "string"
+                                : simpleType.toLowerCase().contains("integer") ? "int32"
+                                : simpleType.toLowerCase().contains("date") ? "int64" : ""),
+                        true,
+                        underscoreField
+                );
+                fieldList.add(field);
+            }
         }
 
         Schema sch = new Schema(
                 "struct",
                 fieldList,
                 false,
-                sinkTopicOrdersConnectName);
+                "orders");
         this.setSchema(sch);
     }
 
-    public void setPayloadFromOrderDto(OrderDto orderDto) throws Exception {
+    public void setPayloadFromOrderDto(OrderDto orderDto) {
         Map<String, Object> payMap = new LinkedHashMap<>();
         for(java.lang.reflect.Field f : orderDto.getClass().getDeclaredFields()) {
             f.setAccessible(true);
             String underscoreField = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, f.getName());
-            Object data = f.get(orderDto);
+            Object data = null;
+            try {
+                data = f.get(orderDto);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
             payMap.put(underscoreField, data);
         }
         this.setPayload(payMap);

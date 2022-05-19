@@ -1,6 +1,6 @@
 package com.hwan2272.msaecomms.controller;
 
-import com.hwan2272.msaecomms.dto.KafkaConnectOrderDto;
+import com.hwan2272.msaecomms.dto.KafkaConnectOrderDtoV1;
 import com.hwan2272.msaecomms.dto.KafkaConnectOrderDtoV2;
 import com.hwan2272.msaecomms.dto.OrderDto;
 import com.hwan2272.msaecomms.entity.OrderEntity;
@@ -43,8 +43,6 @@ public class OrderController {
     @Value("${message.health}")
     String health;
 
-    private final String sinkTopicOrdersConnectName = "sink-topic-orders-connect";
-
     @GetMapping("/hello")
     public String hello() {
         return welcome;
@@ -58,7 +56,7 @@ public class OrderController {
     @PostMapping("/{userId}")
     public ResponseEntity addOrderInfo(
             @PathVariable String userId,
-            @RequestBody RequestOrder requestOrder) throws Exception {
+            @RequestBody RequestOrder requestOrder) {
         OrderDto orderDto = mMapper.map(requestOrder, OrderDto.class);
         orderDto.setUserId(userId);
         orderDto.setOrderId(UUID.randomUUID().toString());
@@ -68,8 +66,8 @@ public class OrderController {
 
         //ResponseOrder responseOrder = mMapper.map(orderDto, ResponseOrder.class);//kafka connect로 변경
 
-        KafkaConnectOrderDto responseKafkaConnectOrderDto
-                = kafkaConnectProducer.send(sinkTopicOrdersConnectName, orderDto);
+        KafkaConnectOrderDtoV2 responseKafkaConnectOrderDto
+                = kafkaConnectProducer.send("orders", orderDto);
         //kafkaProducer.send("topic-orders", orderDto);
 
         return ResponseEntity.status(HttpStatus.CREATED)

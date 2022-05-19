@@ -7,17 +7,15 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class KafkaConnectOrderDto {
+public class KafkaConnectOrderDtoV1 {
     private Schema schema;
     private Payload payload;
 
-    //private final String sinkTopicOrdersConnectName = "sink-topic-orders-connect";
-
-    public KafkaConnectOrderDto() {
+    public KafkaConnectOrderDtoV1() {
         this.setSchemaInit();
     }
 
-    public KafkaConnectOrderDto(OrderDto orderDto) {
+    public KafkaConnectOrderDtoV1(OrderDto orderDto) {
         this.setSchemaInit();
         this.setPayloadFromOrderDto(orderDto);
     }
@@ -33,7 +31,7 @@ public class KafkaConnectOrderDto {
                     new Field("int32", true, "total_price")
                 ),
                 false,
-                "sink-topic-orders-connect");
+                "orders");
         this.setSchema(sch);
     }
 
