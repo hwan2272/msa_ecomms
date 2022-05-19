@@ -13,7 +13,7 @@ Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa +
 
 H2 Database||MariaDB + RabbitMQ + Kafka(Zookeeper, Kafaka Server/Producer/Consumer, Kafka Connect, Kafka Sink) +
 
-CircuitBreaker + Sleuth + Zipkin +
+CircuitBreaker(Resilience4J) + Sleuth + Zipkin +
 
 Docker + AWS EC2 +
 
@@ -75,6 +75,19 @@ Window 환경 - Window PowerShell 실행
 3. connectors status 확인 - http://localhost:8083/connectors?expand=info&expand=status
 
 적용시 2개 orderService에서 kafka connect를 바라보며 POST orders호출시 connect에 담겨진 메세지가 MariaDB로 이관 insert됨
+
+
+### Zipkin 서버 구동
+
+docker pull openzipkin/zipkin
+
+docker run -d -p 9411:9411 openzipkin/zipkin
+
+- localhost:9411/zipkin
+
+
+
+
 
 
 ### Endpoint 목록
