@@ -11,9 +11,7 @@ Microservice(구성개념)
 
 Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + 
 
-H2 Database||MariaDB + RabbitMQ + 
-
-Kafka(Zookeeper, Kafaka Server/Producer/Consumer, Kafka Connect, Kafka Sink) +
+H2 Database||MariaDB + RabbitMQ + Kafka(Zookeeper, Kafaka Server/Producer/Consumer, Kafka Connect, Kafka Sink) +
 
 CircuitBreaker + Sleuth + Zipkin +
 
