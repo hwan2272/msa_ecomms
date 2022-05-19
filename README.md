@@ -93,6 +93,16 @@ Window 환경 - Window PowerShell 실행
 ![KakaoTalk_20220513_095306553_3](https://user-images.githubusercontent.com/65170244/168190789-94f904f5-b16d-4ed0-904f-8841859de68a.jpg)
 
 
+추가 EndPoint (kafka connect)
+
+8. GET localhost:8083/connectors/{connectorName}
+9. GET localhost:8083/connectors?expand=info&expand=status
+10. POST localhost:8083/connectors
+11. DELETE localhost:8083/connectors/{connectorName}
+
+... 등등
+
+
 ### Docker (user-service)
 1. docker build --tag hwan2272/user-service:1.0 .
 2. docker push hwan2272/user-service:1.0 => https://hub.docker.com/repository/docker/hwan2272/user-service
