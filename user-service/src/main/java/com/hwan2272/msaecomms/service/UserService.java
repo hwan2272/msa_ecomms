@@ -5,8 +5,11 @@ import com.hwan2272.msaecomms.dto.UserDto;
 import com.hwan2272.msaecomms.entity.UserEntity;
 import com.hwan2272.msaecomms.repository.UserDataJpaRepository;
 import com.hwan2272.msaecomms.vo.ResponseOrder;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -21,6 +24,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class UserService implements UserDetailsService {
     /*@Autowired
     UserRepository userRepository;*/
@@ -36,6 +40,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     OrderServiceFeignClient orderServiceFeignClient;
+
+    @Autowired
+    CircuitBreakerFactory circuitBreakerFactory;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -59,7 +66,12 @@ public class UserService implements UserDetailsService {
         UserEntity userEntity = userDataJpaRepository.findByUserId(userId);
         UserDto userDto = mMapper.map(userEntity, UserDto.class);
 
-        List<ResponseOrder> orders = orderServiceFeignClient.getOrders(userId);
+        //List<ResponseOrder> orders = orderServiceFeignClient.getOrders(userId);
+        log.info(":::::::::::::::::::Before call order");
+        CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
+        List<ResponseOrder> orders = circuitBreaker.run(() -> orderServiceFeignClient.getOrders(userId),
+                throwable -> new ArrayList<>());//circuitBreaker + sleuth + zipkin을 통한 모니터링
+        log.info(":::::::::::::::::::After call order");
         userDto.setOrders(orders);
         return userDto;
     }

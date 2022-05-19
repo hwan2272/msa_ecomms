@@ -77,7 +77,9 @@ public class OrderController {
     @GetMapping("/{userId}/orders")
     public ResponseEntity getOrders(
             @PathVariable(value = "userId") String userId) {
+        log.info(":::::::::::::::::::Before retrieve order data");
         List<OrderDto> orders = orderService.getUserOrders(userId.trim());
+        log.info(":::::::::::::::::::After retrieve order data");
         return ResponseEntity.status(HttpStatus.OK)
                 .body(orders);
     }
