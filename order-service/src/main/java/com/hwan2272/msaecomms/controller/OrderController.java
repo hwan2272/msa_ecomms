@@ -67,8 +67,8 @@ public class OrderController {
         //ResponseOrder responseOrder = mMapper.map(orderDto, ResponseOrder.class);//kafka connect로 변경
 
         KafkaConnectOrderDtoV2 responseKafkaConnectOrderDto
-                = kafkaConnectProducer.send("orders", orderDto);
-        //kafkaProducer.send("topic-orders", orderDto);
+                = kafkaConnectProducer.send("orders", orderDto); //kafka connect 적재
+        kafkaProducer.send("topic-orders", orderDto); //kafka consumer적재(product 처리용)
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(responseKafkaConnectOrderDto);
