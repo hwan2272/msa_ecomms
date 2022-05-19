@@ -11,7 +11,7 @@ Microservice(구성개념)
 
 Spring Cloud + SpringBoot + Spring Security + JWT + Spring Data jpa + 
 
-H2 Database||MariaDB + RabbitMQ + Kafka(Zookeeper, Kafaka Server/Producer/Consumer, Kafka Connect, Kafka Sink) +
+H2 Database||MariaDB + RabbitMQ + Kafka(Zookeeper, Kafka Server/Producer/Consumer, Kafka Connect, Kafka Sink) +
 
 CircuitBreaker(Resilience4J) + Sleuth + Zipkin +
 
@@ -38,12 +38,12 @@ config-service 구동이 user-service등보다 늦었을 경우, busrefresh사�
 
 Window 환경 - Window PowerShell 실행
 1. zookeeper 구동 - .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-2. kafka server 구동 - .\bin\windows\kafka-server-start.bat .\config\server.properties
+2. Kafka server 구동 - .\bin\windows\kafka-server-start.bat .\config\server.properties
 
 --테스트시--
 
-3. kafka producer 구동 및 토픽설정 - .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic quickstart-events (토픽명 임의 지정)
-4. kafka consumer 구동 및 토픽설정 - .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic quickstart-events (토픽명 임의 지정)
+3. Kafka producer 구동 및 토픽설정 - .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic quickstart-events (토픽명 임의 지정)
+4. Kafka consumer 구동 및 토픽설정 - .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic quickstart-events (토픽명 임의 지정)
 5. producer에서 message 입력 -> consumer에서 표시되는지 확인
 
 
@@ -52,7 +52,7 @@ Window 환경 - Window PowerShell 실행
 ### Kafka Connect 구동
 
 Window 환경 - Window PowerShell 실행
-1. kafka connect(distributed) 구동 - .\bin\windows\connect-distributed.bat .\etc\kafka\connect-distributed.properties
+1. Kafka connect(distributed) 구동 - .\bin\windows\connect-distributed.bat .\etc\kafka\connect-distributed.properties
 2. sink connect 생성 - POST localhost:8083/connectors (body내용-orders테이블용)
 {
     "name": "my-sink-topic-orders-connect",
@@ -74,7 +74,7 @@ Window 환경 - Window PowerShell 실행
 }
 3. connectors status 확인 - http://localhost:8083/connectors?expand=info&expand=status
 
-적용시 2개 orderService에서 kafka connect를 바라보며 POST orders호출시 connect에 담겨진 메세지가 MariaDB로 이관 insert됨
+적용시 2개 orderService에서 Kafka connect를 바라보며 POST orders호출시 connect에 담겨진 메세지가 MariaDB로 이관 insert됨
 
 
 ### Zipkin 서버 구동
