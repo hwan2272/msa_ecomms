@@ -49,6 +49,33 @@ Window 환경 - Window PowerShell 실행
 
 ![kafka구동](https://user-images.githubusercontent.com/65170244/168455543-bf4bbd25-8a2a-4e72-b6e7-09afed52eae9.png)
 
+### Kafka Connect 구동
+
+Window 환경 - Window PowerShell 실행
+1. kafka connect(distributed) 구동 - .\bin\windows\connect-distributed.bat .\etc\kafka\connect-distributed.properties
+2. sink connect 생성 - POST localhost:8083/connectors (body내용-orders테이블용)
+{
+    "name": "my-sink-topic-orders-connect",
+    "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+        "connection.url": "jdbc:mysql://localhost:3306/mydb",
+        "connection.user": "root",
+        "connection.password": "test1357",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter.schemas.enable": true,
+        "value.converter.schemas.enable": true,
+        "auto.create": "true",
+        "auto.evolve": "true",
+        "delete.enabled": "false",
+        "tasks.max": "1",
+        "topics": "orders"
+    }
+}
+3. connectors status 확인 - http://localhost:8083/connectors?expand=info&expand=status
+
+적용시 2개 orderService에서 kafka connect를 바라보며 POST orders호출시 connect에 담겨진 메세지가 MariaDB로 이관 insert됨
+
 
 ### Endpoint 목록
 
