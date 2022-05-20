@@ -4,6 +4,7 @@ import com.hwan2272.msaecomms.dto.UserDto;
 import com.hwan2272.msaecomms.service.UserService;
 import com.hwan2272.msaecomms.vo.RequestUser;
 import com.hwan2272.msaecomms.vo.ResponseUser;
+import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -31,11 +32,13 @@ public class UserController {
     String health;
 
     @GetMapping("/hello")
+    @Timed(value="users.welcome", longTask = true)
     public String hello() {
         return welcome;
     }
 
     @GetMapping("/healthCheck")
+    @Timed(value="users.status", longTask = true)
     public String healthCheck() {
         return String.format(health, "UserService");
     }

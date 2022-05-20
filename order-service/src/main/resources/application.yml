@@ -49,3 +49,9 @@ logging:
 message:
   welcome: "Hello World!!"
   health: "%s is Working"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh, info, metrics, prometheus
