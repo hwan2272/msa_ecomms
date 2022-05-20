@@ -132,9 +132,9 @@ AWS EC2 배포, Docker 구동 (예시)
 ![AWS_EC2_Docker구동_20220517](https://user-images.githubusercontent.com/65170244/168740312-060800b9-3ca9-4a9e-98ee-fcac7b6fb5bd.jpg)
 
 
-### 최종 배포 형상 (AWS EC2) 
+### 최종 배포 형상 (AWS EC2) - 2022-05-20
 
-
+![AWS_EC2_Docker구동_전체배포완료_20220520](https://user-images.githubusercontent.com/65170244/169505167-483591c3-2e03-4d5e-9312-d7609c533257.jpg)
 
 
 
