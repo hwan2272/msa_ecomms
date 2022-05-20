@@ -15,6 +15,8 @@ H2 Database||MariaDB + RabbitMQ + Kafka(Zookeeper, Kafka Server/Producer/Consume
 
 CircuitBreaker(Resilience4J) + Sleuth + Zipkin +
 
+Prometheus + Grafana +
+
 Docker + AWS EC2 +
 
 (AOP + Spring Rest docs + Kubernetes)
