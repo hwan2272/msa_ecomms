@@ -123,13 +123,21 @@ Window 환경 - Window PowerShell 실행
 3. docker pull hwan2272/user-service:1.0
 
 
-AWS EC2 배포, Docker 구동
+AWS EC2 배포, Docker 구동 (예시)
 
 - https://hub.docker.com/repository/docker/hwan2272/discovery-service
 - https://hub.docker.com/repository/docker/hwan2272/gateway-service
 - https://hub.docker.com/repository/docker/hwan2272/config-service
 
 ![AWS_EC2_Docker구동_20220517](https://user-images.githubusercontent.com/65170244/168740312-060800b9-3ca9-4a9e-98ee-fcac7b6fb5bd.jpg)
+
+
+### 최종 배포 형상 (AWS EC2) 
+
+
+
+
+
 
 
 ### 참고 강의 / 소스
