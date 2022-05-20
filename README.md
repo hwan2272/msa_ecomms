@@ -19,7 +19,7 @@ Prometheus + Grafana +
 
 Docker + AWS EC2 +
 
-(AOP + Spring Rest docs + Kubernetes)
+(Spring Rest docs + Kubernetes)
 
 
 
