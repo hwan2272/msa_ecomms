@@ -136,7 +136,7 @@ AWS EC2 배포, Docker 구동 (예시)
 
 ![AWS_EC2_Docker구동_전체배포완료_20220520](https://user-images.githubusercontent.com/65170244/169505167-483591c3-2e03-4d5e-9312-d7609c533257.jpg)
 
-
+![AWS_EC2_Spring Cloud Eureka_20220520](https://user-images.githubusercontent.com/65170244/169506462-4ee252b0-1f2e-4b2e-b17e-c25997cff3fa.jpg)
 
 
 
