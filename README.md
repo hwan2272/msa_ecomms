@@ -146,7 +146,7 @@ AWS EC2 배포, Docker 구동 (예시)
 
 ### 인프런
 
-- 이도원님 강의 및 소스(https://github.com/joneconsulting/msa_with_spring_cloud) 기반 환경 구성
+- 이도원님 강의 (https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4) 및 소스(https://github.com/joneconsulting/msa_with_spring_cloud) 기반 환경 구성
 - 김영한님 강의 (https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-JPA-%EC%8B%A4%EC%A0%84) 기반 Data JPA 구성
 - 기타 독학 부분
 
