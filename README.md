@@ -156,6 +156,7 @@ AWS EC2 배포, Docker 구동 (예시)
 - 강의에서는 
 - Data JPA를 사용하지 않았지만 본 소스에서는 Data JPA를 적용하고, 이에 대한 보충작업등을 추가
 - @Test를 사용하지 않았으나 본 소스에서는 사용, entity 정도는 test해봄으로 작업시간 단축
+- gatewayService의 AuthorizationHeaderFilter에서 JWT를 검증부분이 미흡하여 검증하기위한 방법으로 userFeignClient도입하였으나 실패, 다른방법 구상중
 - local PC에 Docker별 배포로 구축하고 끝났지만 본 소스에서는 AWS EC2를 사용하여 배포해봄
 - java docs 등도 없지만 본 소스에서는 Spring Rest Docs 적용 (예정_
 - 소스 리팩토링 - orderService KafkaConnectOrderDto V1- 예제상 4개 클래스 통합화, V2- schema, payload 세팅 소스간략화 시도
