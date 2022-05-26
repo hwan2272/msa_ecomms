@@ -147,8 +147,16 @@ AWS EC2 배포, Docker 구동 (예시)
 ### 인프런
 
 - 이도원님 강의 및 소스(https://github.com/joneconsulting/msa_with_spring_cloud) 기반 환경 구성
-- 김영한님 강의 기반 Data JPA 구성 (및 일부 중복로직 등에 대한 적절한 디자인패턴 적용구상중)
-- orderService KafkaConnectOrderDto V1- 예제상 4개 클래스 통합화, V2- schema, payload 세팅 소스간략화 시도
-=> 성공, 커뮤니티 공유 (https://www.inflearn.com/chats/541160)
+- 김영한님 강의 기반 Data JPA 구성
 - 기타 독학 부분
+
+
+## 자체 시도/개선/커스터마이즈
+
+- 강의에서는 
+- Data JPA를 사용하지 않았지만 본 소스에서는 Data JPA를 적용하고, 이에 대한 보충작업등을 추가
+- @Test를 사용하지 않았으나 본 소스에서는 사용, entity 정도는 test해봄으로 작업시간 단축
+- local PC에 Docker별 배포로 구축하고 끝났지만 본 소스에서는 AWS EC2를 사용하여 배포해봄
+- 소스 리팩토링 - orderService KafkaConnectOrderDto V1- 예제상 4개 클래스 통합화, V2- schema, payload 세팅 소스간략화 시도
+=> 성공, 커뮤니티 공유 (https://www.inflearn.com/chats/541160)
 
