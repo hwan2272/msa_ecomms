@@ -39,7 +39,7 @@ userService 구동
 docker run -d --network msaecomms-network -e "spring.cloud.conifg.uri=http://config-service:8888" -e "spring.rabbitmq.host=rabbitmq" -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" -e "spring.zipkin.base-url=http://zipkin:9411" -e "spring.datasource.url=jdbc:mariadb://mariadb:3306/mydb" --name user-service hwan2272/user-service:1.0
 
 orderService 구동
-docker run -d --network msaecomms-network -e "spring.cloud.conifg.uri=http://config-service:8888" -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" -e "spring.zipkin.base-url=http://zipkin:9411" -e "spring.datasource.url=jdbc:mariadb://mariadb:3306/mydb" --name order-service hwan2272/order-service:1.0
+docker run -d --network msaecomms-network -e "spring.cloud.conifg.uri=http://config-service:8888" -e "spring.rabbitmq.host=rabbitmq" -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" -e "spring.zipkin.base-url=http://zipkin:9411" -e "spring.datasource.url=jdbc:mariadb://mariadb:3306/mydb" --name order-service hwan2272/order-service:1.0
 
 productService 구동
 docker run -d --network msaecomms-network -e "spring.cloud.conifg.uri=http://config-service:8888" -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" -e "spring.datasource.url=jdbc:mariadb://mariadb:3306/mydb" --name product-service hwan2272/product-service:1.0
