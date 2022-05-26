@@ -157,6 +157,7 @@ AWS EC2 배포, Docker 구동 (예시)
 - Data JPA를 사용하지 않았지만 본 소스에서는 Data JPA를 적용하고, 이에 대한 보충작업등을 추가
 - @Test를 사용하지 않았으나 본 소스에서는 사용, entity 정도는 test해봄으로 작업시간 단축
 - local PC에 Docker별 배포로 구축하고 끝났지만 본 소스에서는 AWS EC2를 사용하여 배포해봄
+- java docs 등도 없지만 본 소스에서는 Spring Rest Docs 적용 (예정_
 - 소스 리팩토링 - orderService KafkaConnectOrderDto V1- 예제상 4개 클래스 통합화, V2- schema, payload 세팅 소스간략화 시도
 => 성공, 커뮤니티 공유 (https://www.inflearn.com/chats/541160)
 
