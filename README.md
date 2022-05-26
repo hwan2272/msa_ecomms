@@ -164,5 +164,6 @@ AWS EC2 배포, Docker 구동 (예시)
 => 성공, 커뮤니티 공유 (https://www.inflearn.com/chats/541160)
 
 - MSA방식이라 모듈별로 나누어져있는 Entity들의 올바른 관리방법 구상중.. 
-- (본 소스에서는 Spring Cloud의 FeignClient개념으로 MSA간 통신으로 참조문제가 해결되었지만 SpringCloud가 아닐 경우의 표준or올바른 관리 방법은?)
+- (본 소스에서는 Spring Cloud의 FeignClient개념으로 MSA간 통신으로 참조문제가 해결되었지만 
+- 타 MSA 등의 Spring Cloud가 아닐(참조할수 없는) 경우의 표준or올바른 관리 방법은?)
 
