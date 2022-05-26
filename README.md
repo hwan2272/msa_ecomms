@@ -163,5 +163,6 @@ AWS EC2 배포, Docker 구동 (예시)
 - 소스 리팩토링 - orderService KafkaConnectOrderDto V1- 예제상 4개 클래스 통합화, V2- schema, payload 세팅 소스간략화 시도
 => 성공, 커뮤니티 공유 (https://www.inflearn.com/chats/541160)
 
-- MSA방식이라 모듈별로 나누어져있는 Entity들의 올바른 관리방법 구상중..
+- MSA방식이라 모듈별로 나누어져있는 Entity들의 올바른 관리방법 구상중.. 
+- (본 소스에서는 Spring Cloud의 FeignClient개념으로 MSA간 통신으로 참조문제가 해결되었지만 SpringCloud가 아닐 경우의 표준or올바른 관리 방법은?)
 
