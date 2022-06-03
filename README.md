@@ -167,3 +167,9 @@ AWS EC2 배포, Docker 구동 (예시)
 - (본 소스에서는 Spring Cloud의 FeignClient개념으로 MSA간 통신으로 참조문제가 해결되었지만 
 - 타 MSA 등의 Spring Cloud가 아닐(참조할수 없는) 경우의 표준or올바른 관리 방법은?)
 
+
+### TODO
+
+- AWS S3, CloudFront 를 이용한 Frontend단(resources포함) 처리로 인프라 확장
+- AWS RDS 를 이용한 DB 서버 관리 확장
+- ...
