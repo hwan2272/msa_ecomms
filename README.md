@@ -160,6 +160,7 @@ AWS EC2 배포, Docker 구동 (예시)
 4. local PC에 Docker별 배포로 구축하고 끝났지만 본 소스에서는 AWS EC2를 사용하여 배포해봄
 5. java docs 등도 없지만 본 소스에서는 Spring Rest Docs 적용 (진행중 - productService)
 
+![ProductService Spring Rest Docs 진행중_20220607](https://user-images.githubusercontent.com/65170244/172313379-83f1cba1-deb8-48f8-bf37-c21b3946a6f7.jpg)
 
 
 
