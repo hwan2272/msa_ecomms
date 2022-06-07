@@ -162,7 +162,7 @@ AWS EC2 배포, Docker 구동 (예시)
 
 ![ProductService Spring Rest Docs 진행중_20220607](https://user-images.githubusercontent.com/65170244/172313379-83f1cba1-deb8-48f8-bf37-c21b3946a6f7.jpg)
 
-
+![ProductService Spring Rest Docs 진행중_20220607_adoc생성](https://user-images.githubusercontent.com/65170244/172314527-484c3b86-06fc-4913-b4d5-a7e8c9ef6fa5.jpg)
 
 - 소스 리팩토링 - orderService KafkaConnectOrderDto V1- 예제상 4개 클래스 통합화, V2- schema, payload 세팅 소스간략화 시도
 => 성공, 커뮤니티 공유 (https://www.inflearn.com/chats/541160)
