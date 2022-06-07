@@ -21,7 +21,7 @@ class ProductEntityTest {
     @Autowired
     ProductDataJpaRepository productDataJpaRepository;
 
-    @Test
+    //@Test
     public void testEntity() {
         ProductEntity productEntity = new ProductEntity();
         productEntity.setProductId("P-001-T");
