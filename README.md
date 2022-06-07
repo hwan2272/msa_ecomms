@@ -158,7 +158,10 @@ AWS EC2 배포, Docker 구동 (예시)
 2. @Test를 사용하지 않았으나 본 소스에서는 사용, entity 정도는 test해보는 로직 추가
 3. gatewayService의 AuthorizationHeaderFilter에서 JWT를 검증부분이 미흡하여 본 소스에서는 userFeignClient도입하였으나 실패, 다른방법 구상중
 4. local PC에 Docker별 배포로 구축하고 끝났지만 본 소스에서는 AWS EC2를 사용하여 배포해봄
-5. java docs 등도 없지만 본 소스에서는 Spring Rest Docs 적용 (예정_
+5. java docs 등도 없지만 본 소스에서는 Spring Rest Docs 적용 (진행중 - productService)
+
+
+
 
 - 소스 리팩토링 - orderService KafkaConnectOrderDto V1- 예제상 4개 클래스 통합화, V2- schema, payload 세팅 소스간략화 시도
 => 성공, 커뮤니티 공유 (https://www.inflearn.com/chats/541160)
@@ -172,4 +175,5 @@ AWS EC2 배포, Docker 구동 (예시)
 
 - AWS S3, CloudFront 를 이용한 Frontend단(resources포함) 처리로 인프라 확장
 - AWS RDS 를 이용한 DB 서버 관리 확장
-- ...
+- 
+
